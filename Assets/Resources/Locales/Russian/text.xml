@@ -1,0 +1,59 @@
+﻿<?xml version="1.0"?>
+<root>
+	<String id="play">Играть</String>
+  <String id="nosound">Без звука</String>
+  <String id="Setting">Настройки</String>
+  <String id="Language">Язык</String>
+  <String id="Volume">Громкость</String>
+  <String id="Sound">Звуки</String>
+  <String id="Music">Музыка</String>
+   <String id="Round">Раунд</String>
+  
+    <String id="Looser">Ты проиграл!</String>
+    <String id="Winer">Ты победил!</String>
+  
+    <String id="CMD.Empty_1">Подождите</String>
+    <String id="CMD.OneFingerTap_1">Клик</String>
+    <String id="CMD.TwoFingerTap_1">Клик двумя пальцами</String>
+    <String id="CMD.OneFingerLongTap_1">Длинный клик</String>
+    <String id="CMD.GeneralFlick_1">Свайп</String>
+    <String id="CMD.LeftFlick_1">Свайп влево</String>
+    <String id="CMD.RightFlick_1">Свайп вправо</String>
+    <String id="CMD.UpFlick_1">Свайп вверх</String>
+    <String id="CMD.DownFlick_1">Свайп вниз</String>
+	<String id="CMD.TwoFingerLongTap_1">Длинный клик двумя пальцами</String>
+
+    <String id="CMD.Empty_2">Нечего не делайте</String>
+    <String id="CMD.OneFingerTap_2">Клик одним пальцем</String>
+    <String id="CMD.TwoFingerTap_2">Кликните двумя пальцами</String>
+    <String id="CMD.OneFingerLongTap_2">Кликните и продержите 1с </String>
+    <String id="CMD.GeneralFlick_2">Пожалуйста, свайпните в любом направлении</String>
+    <String id="CMD.LeftFlick_2">Пожалуйста, свайпните влево</String>
+    <String id="CMD.RightFlick_2">Не делайте нечего, крому свайпа вправо</String>
+    <String id="CMD.UpFlick_2">Сделайте свайп в сторону оппонента</String>
+    <String id="CMD.DownFlick_2">Свайпните на себя</String>
+    <String id="CMD.TwoFingerLongTap_2">Длиииинный клик двумя пальцами</String>
+
+    <String id="CMD.Empty_3">Нечего не делайте</String>
+    <String id="CMD.OneFingerTap_3">Просто нажмите</String>
+    <String id="CMD.TwoFingerTap_3">Пожалуйста, коснитесь двумя пальцами</String>
+    <String id="CMD.OneFingerLongTap_3">Держите один палец больше секунды</String>
+    <String id="CMD.GeneralFlick_3">Ты можеш свайпнуть в любом направлении</String>
+    <String id="CMD.LeftFlick_3">Сейчас ты должен свайпнуть влево</String>
+    <String id="CMD.RightFlick_3">СВАААААААЙП ВПРААААААВО!!!!!</String>
+    <String id="CMD.UpFlick_3">Свайп вперед</String>
+    <String id="CMD.DownFlick_3">Свайп назад</String>
+    <String id="CMD.TwoFingerLongTap_3">Держите два пальца 0.7 секунды</String>
+
+    <String id="CMD.Empty_4">Нечего не делайте</String>
+    <String id="CMD.OneFingerTap_4">Прошу,сделать только клик</String>
+    <String id="CMD.TwoFingerTap_4">Постучите двумя пальцами одновременно</String>
+    <String id="CMD.OneFingerLongTap_4">Держите один палец 0.7 секунды</String>
+    <String id="CMD.GeneralFlick_4">Просто свайп</String>
+    <String id="CMD.LeftFlick_4"> → Свайп влево →</String>
+    <String id="CMD.RightFlick_4">←тссссс!Ты должен сделать свайп вправо!</String>
+    <String id="CMD.UpFlick_4">↑ Свайп в этом направлении ↑ </String>
+    <String id="CMD.DownFlick_4">Быстрый свайп на себя</String>
+    <String id="CMD.TwoFingerLongTap_4">Положите два пальца на экран и отпустите</String>
+    
+</root>

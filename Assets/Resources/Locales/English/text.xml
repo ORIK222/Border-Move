@@ -1,0 +1,60 @@
+﻿<?xml version="1.0"?>
+<root>
+	<String id="play">Play</String>
+    <String id="nosound">No sound</String>
+
+    <String id="Setting">Setting</String>
+    <String id="Language">Locale</String>
+    <String id="Volume">Volume</String>
+    <String id="Sound">Sound</String>
+    <String id="Music">Music</String>
+    <String id="Round">Round</String>
+  
+    <String id="Looser">You loose!</String>
+    <String id="Winer">You win!</String>
+  
+    <String id="CMD.Empty_1">Wait</String>
+    <String id="CMD.OneFingerTap_1">Tap</String>
+    <String id="CMD.TwoFingerTap_1">Two Finger Tap</String>
+    <String id="CMD.OneFingerLongTap_1">Long Tap</String>
+    <String id="CMD.GeneralFlick_1">Swipe</String>
+    <String id="CMD.LeftFlick_1">Left swipe</String>
+    <String id="CMD.RightFlick_1">Swipe right</String>
+    <String id="CMD.UpFlick_1">Swipe up</String>
+    <String id="CMD.DownFlick_1">Swipe down</String>
+	<String id="CMD.TwoFingerLongTap_1">Hold with 2 fingers and release</String>
+
+    <String id="CMD.Empty_2">Do nothing</String>
+    <String id="CMD.OneFingerTap_2">One Finger Tap</String>
+    <String id="CMD.TwoFingerTap_2">Tap with two fingers</String>
+    <String id="CMD.OneFingerLongTap_2">Tap and hold 1 second </String>
+    <String id="CMD.GeneralFlick_2">Please make swipe at any direction</String>
+    <String id="CMD.LeftFlick_2">Please swipe on the left</String>
+    <String id="CMD.RightFlick_2">Do notheng except right swipe</String>
+    <String id="CMD.UpFlick_2">Shipe to oponent</String>
+    <String id="CMD.DownFlick_2">Swipe to yourself</String>
+    <String id="CMD.TwoFingerLongTap_2">Tap two fingers and hold for a second</String>
+
+    <String id="CMD.Empty_3">Do nothing</String>
+    <String id="CMD.OneFingerTap_3">Make just single tap</String>
+    <String id="CMD.TwoFingerTap_3">Please make tap using two fingers</String>
+    <String id="CMD.OneFingerLongTap_3">Hold 1 finger for a second</String>
+    <String id="CMD.GeneralFlick_3">You can make a swipe anywhere</String>
+    <String id="CMD.LeftFlick_3">Now you can one swipe left</String>
+    <String id="CMD.RightFlick_3">SWWIIIIPPPPPPEEE TO THE RIIIIIIGHT</String>
+    <String id="CMD.UpFlick_3">Swipe on the front</String>
+    <String id="CMD.DownFlick_3">Swipe back</String>
+    <String id="CMD.TwoFingerLongTap_3">Touch with 2 fingers with 0.7 sec duration</String>
+
+    <String id="CMD.Empty_4">Do nothing</String>
+    <String id="CMD.OneFingerTap_4">Would you be so kind to make only tap</String>
+    <String id="CMD.TwoFingerTap_4">Make tap with two fingers at once</String>
+    <String id="CMD.OneFingerLongTap_4">Hold with one finger for 0.7 second</String>
+    <String id="CMD.GeneralFlick_4">Just one swipe</String>
+    <String id="CMD.LeftFlick_4"> → Left swipe →</String>
+    <String id="CMD.RightFlick_4">←psssst! you should make a right swipe!</String>
+    <String id="CMD.UpFlick_4">↑ Swipe to this direction ↑ </String>
+    <String id="CMD.DownFlick_4">Make a quick swipe you your body</String>
+    <String id="CMD.TwoFingerLongTap_4">Put two fingers on the screen and release</String>
+    
+</root>
