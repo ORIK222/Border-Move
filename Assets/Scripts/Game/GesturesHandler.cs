@@ -116,11 +116,11 @@ public class GesturesHandler : MonoBehaviour
 
     void HandleTapEvent(int tapCount)
     {
-        if (1 == tapCount)
+        if ( tapCount == 1 )
         {
             _commandManager.CheckCurrentCommand(CommandsManager.CommandType.OneFingerTap);
         }
-        else if (1 == tapCount)
+        else if (tapCount == 2)
         {
             _commandManager.CheckCurrentCommand(CommandsManager.CommandType.TwoFingerTap);
         }

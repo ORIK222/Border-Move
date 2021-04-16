@@ -70,7 +70,7 @@ public class Arbiter : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             nextMoves = CommandsManager.generateMoves(_roundCounter);
-            if (nextMoves[0] != _lastCommand)
+            if (nextMoves[0] != _lastCommand && nextMoves[0] != CommandsManager.CommandType.TwoFingerTap && nextMoves[0] != CommandsManager.CommandType.TwoFingerLongTap)
             {
                 break;
             }

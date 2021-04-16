@@ -65,7 +65,7 @@ public class CommandsManager : MonoBehaviour
         List<CommandType> nextTask = new List<CommandType>();
         if (roundCounter < 3)
         {
-            var com = getRandomCommand(CommandType.OneFingerTap, CommandType.TwoFingerTap);
+            var com = getRandomCommand(CommandType.OneFingerTap, CommandType.GeneralFlick);
             nextTask = GetRandomComList(com, 3);
         }
         else if (roundCounter < 9)
