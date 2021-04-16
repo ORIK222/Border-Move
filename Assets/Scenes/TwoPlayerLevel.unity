@@ -420,7 +420,7 @@ RectTransform:
   - {fileID: 2069685394}
   - {fileID: 1085941900}
   m_Father: {fileID: 865560680}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1559,8 +1559,8 @@ RectTransform:
   - {fileID: 404529289}
   - {fileID: 1692294258}
   - {fileID: 1170137593}
-  - {fileID: 115646480}
   - {fileID: 1775442559}
+  - {fileID: 115646480}
   - {fileID: 1168705907}
   - {fileID: 2000696466}
   - {fileID: 989387676}
@@ -2413,7 +2413,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 731}
+  m_AnchoredPosition: {x: 0, y: -593}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1170137594
@@ -2429,7 +2429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3031,7 +3031,7 @@ Transform:
   - {fileID: 1860760745}
   - {fileID: 513800806}
   m_Father: {fileID: 865560680}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1801649296
 GameObject:
