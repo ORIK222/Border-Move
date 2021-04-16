@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CommandChecker : MonoBehaviour
+public class ScoreLevel : MonoBehaviour
 {
 
     [SerializeField] private SinglePlayer _player;
@@ -40,7 +40,7 @@ public class CommandChecker : MonoBehaviour
         {
             return;
         }
-        if (_player.GetIsPlayerEnded() || Time.time > _roundEndTimer)
+        if (_player.GetIsPlayerEnded())
         {
             EndRound();
         }

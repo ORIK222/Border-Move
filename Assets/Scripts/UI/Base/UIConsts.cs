@@ -27,14 +27,16 @@ public class UIConsts
 		SPLASHSCENE = 0,
 		MENU = 1,
 		TWOPLAYERLEVEL = 2,
-		SINGLEPLAYERLEVEL = 3
+		SCORELEVEL = 3,
+		SURVIVALLEVEL = 4
 	}
 
 	public static string[] SCENE_NAMES = {
 		"SplashScene",
 		"Menu",
 		"TwoPlayerLevel",
-		"SinglePlayerLevel"
+		"ScoreLevel",
+		"SurvivalLevel"
 	};
 }
 

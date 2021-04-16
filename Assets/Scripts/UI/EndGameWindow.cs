@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EndGameWindow : MonoBehaviour {
 
-    [SerializeField] BorderController _border;
+    [SerializeField] TwoPlayerBorderController _border;
     [SerializeField] CanvasGroup _canvasGroup;
     [SerializeField] Button _buttonRestart;
     [SerializeField] Text _firstPlayerText;

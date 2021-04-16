@@ -18,7 +18,7 @@ public class SinglePlayer : MonoBehaviour
 
     public CommandsManager commandsManager;
 
-    private void Start()
+    private void Awake()
     {
         _playerTaskDisplayer = GetComponent<PlayerTaskDisplayer>();
     }

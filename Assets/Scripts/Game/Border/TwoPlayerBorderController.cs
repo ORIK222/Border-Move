@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class BorderController : MonoBehaviour {
+public class TwoPlayerBorderController : MonoBehaviour {
     [SerializeField] GameObject _leftArrows;
     [SerializeField] GameObject _rightArrows;
 

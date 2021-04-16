@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/TwoPlayerLevel.unity
     guid: 991ad7b233a38384788a4a9fc177d0aa
   - enabled: 1
-    path: Assets/Scenes/SinglePlayerLevel.unity
+    path: Assets/Scenes/ScoreLevel.unity
     guid: 893617af5b680f046a5fdc5875c39be2
   m_configObjects: {}

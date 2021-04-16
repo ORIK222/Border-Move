@@ -39,7 +39,6 @@ public class CommandsManager : MonoBehaviour
 
     public void CheckCurrentCommand(CommandType currentCommand)
     {
-        Debug.Log(currentCommand);
         LastActionTime = Time.time;
         if (Commands.Count > 0)
         {

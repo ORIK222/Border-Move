@@ -10,7 +10,7 @@ public class Arbiter : MonoBehaviour
     [SerializeField] private CooperativePlayer _secondPlayer;
 
     [SerializeField] private TimeBarController _timeBar;
-    [SerializeField] private BorderController _border;
+    [SerializeField] private TwoPlayerBorderController _border;
     [SerializeField] private RoundCountDisplayer _roundNumberText;
     [SerializeField] private float RoundTime;
     [SerializeField] private int MaxBorderSteps = 10;
