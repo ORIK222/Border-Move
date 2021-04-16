@@ -35,7 +35,7 @@ public class SurvivalBorder : MonoBehaviour
     }
     private void BorderUp()
     {
-        _transform.position += new Vector3(-0.5f, 0,0);
+        _transform.position += new Vector3(-25f, 0,0);
         IsStop = false;
     }
     private void SpeedIncrease()
@@ -43,7 +43,6 @@ public class SurvivalBorder : MonoBehaviour
         _time += 1 * Time.deltaTime;
         if(_time - _tempTime > 3)
         {
-            Debug.Log("Fast");
             _tempTime = _time;
             _speed += 1;
         }    

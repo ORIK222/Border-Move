@@ -31,7 +31,6 @@ public class PlayerTaskDisplayer : MonoBehaviour {
 
     public void UpdateInfoPanel(List<CommandsManager.CommandType> commands, int variation) {
         string str = "";
-
         foreach (var item in commands)
         {
             str += Localer.GetText("CMD." + item.ToString() + "_" + variation) + "\n";

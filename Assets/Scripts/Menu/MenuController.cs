@@ -12,7 +12,7 @@ public class MenuController : MonoBehaviour
     public void StartButtonOnClick()
     {
         if (TypeGameSelector.IsSingle)
-            GameManager.Instance.GameFlow.TransitToScene(UIConsts.SCENE_ID.SCORELEVEL);
+            GameManager.Instance.GameFlow.TransitToScene(UIConsts.SCENE_ID.SURVIVALLEVEL);
         else
             GameManager.Instance.GameFlow.TransitToScene(UIConsts.SCENE_ID.TWOPLAYERLEVEL);
     }

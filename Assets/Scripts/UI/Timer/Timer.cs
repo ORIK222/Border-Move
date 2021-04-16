@@ -3,6 +3,12 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
+    private static string _currentTime;
+    public static string CurrentTime
+    {
+        get => _currentTime;
+        private set { }
+    }
     private TMP_Text _timeText;
     private float _timeBeforeSeconds = 0;
     [SerializeField] private int _gameDuration = 0;
@@ -25,7 +31,6 @@ public class Timer : MonoBehaviour
             _gameDuration += 1;
             _timeBeforeSeconds = 0;
             _timeText.text = "Time: " + SecondsToMinutesConverter(_gameDuration);
-
         }
     }
 
@@ -43,6 +48,7 @@ public class Timer : MonoBehaviour
                 timeInString = minutes.ToString() + ":" + seconds;
             else
                 timeInString = minutes.ToString() + ":0" + seconds;
+            _currentTime = timeInString;
             return timeInString;
         }
     }

@@ -70,9 +70,9 @@ public class ScoreLevel : MonoBehaviour
             {
                 break;
             }
-        } // ãåíåðàö³ÿ äîñòóïíèõ äëÿ íàñòóïíîãî ðàóíäó ðóõ³â
+        }
 
-        int variation = 1; // îäèí ç âàð³àíò³â çàâäàííÿ äëÿ ãðàâöÿ
+        int variation = 1; 
         if (_roundCounter > 10)
         {
             variation = Random.Range(1, 5); //4+1

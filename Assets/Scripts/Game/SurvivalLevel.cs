@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class SurvivalLevel : MonoBehaviour
 {
@@ -13,6 +12,7 @@ public class SurvivalLevel : MonoBehaviour
 
     private int _roundCounter;
     private bool _endGame;
+    private bool _roundActive;
 
     private CommandsManager.CommandType _lastCommand = CommandsManager.CommandType.OneFingerTap;
 
@@ -28,7 +28,9 @@ public class SurvivalLevel : MonoBehaviour
 
     private void Update()
     {
-        if (_endGame)
+        if(!_endGame)
+        CheckBorderPosition();
+        if (!_roundActive || _endGame)
         {
             return;
         }
@@ -67,26 +69,29 @@ public class SurvivalLevel : MonoBehaviour
 
         _player.StartRound(nextMoves, variation);
         _lastCommand = nextMoves[0];
-        yield return new WaitForSeconds(0.2f);
-    }
+        yield return null;
+        _roundActive = true;
 
+    }
     private void EndRound()
     {
+        _roundActive = false;
         SinglePlayer winer = CheckRoundResult();
         if (winer)
             _border.IsStop = true;
+
        _player.MakeRoundResult();
         _roundCounter += 1;
-        Invoke("BeginRound", 1f);
+        Invoke("BeginRound", 0.4f);
         _player.EndRound();
     }
 
     private void CheckBorderPosition()
     {
-        if (!_border)
+        if (_border.transform.position.x >= 1200)
         {
             _endGame = true;
-            Invoke("EndGame", 2f);
+            Invoke("EndGame", 1f);
         }
     }
 
@@ -123,7 +128,7 @@ public class SurvivalLevel : MonoBehaviour
         LeanTween.value(gameObject, 0.2f, 1f, 0.5f).setOnUpdate((float val) => {
             _resultCommandText.transform.localScale = new Vector3(val, val, 1f);
         });
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.4f);
         _resultCommandText.text = "";
     }
 }
