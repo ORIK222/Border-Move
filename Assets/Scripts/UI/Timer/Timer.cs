@@ -20,6 +20,7 @@ public class Timer : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(SurvivalLevel.CoolDownIsEnd)
         CalculationTime();
     }
 

@@ -13,18 +13,19 @@ public class SurvivalBorder : MonoBehaviour
     private float _time;
     private float _tempTime = 0;
 
+    private int _liftingLevel = 25;
 
-    
+
     private void Start()
     {
         _transform = GetComponent<Transform>();
     }
     private void FixedUpdate()
     {
-        if (!IsStop)
+        if (!IsStop && SurvivalLevel.CoolDownIsEnd)
             Move();
-        else
-            BorderUp();
+        else if (IsStop)
+            BorderUp(_liftingLevel);
         SpeedIncrease();
 
     }
@@ -33,9 +34,9 @@ public class SurvivalBorder : MonoBehaviour
         var targetPosition = _transform.position + _direction;
         _transform.position = Vector3.Lerp(_transform.position, targetPosition, _speed * Time.deltaTime);
     }
-    private void BorderUp()
+    private void BorderUp(int height)
     {
-        _transform.position += new Vector3(-25f, 0,0);
+        _transform.position += new Vector3(-height, 0,0);
         IsStop = false;
     }
     private void SpeedIncrease()
@@ -47,4 +48,5 @@ public class SurvivalBorder : MonoBehaviour
             _speed += 1;
         }    
     }
+
 }

@@ -9,7 +9,9 @@ public class SurvivalLevel : MonoBehaviour
     [SerializeField] private SinglePlayer _player;
     [SerializeField] private SurvivalBorder _border;
     [SerializeField] private TMP_Text _resultCommandText;
+    [SerializeField] private TMP_Text _coolDownText;
 
+    public static bool CoolDownIsEnd = false;
     private int _roundCounter;
     private bool _endGame;
     private bool _roundActive;
@@ -23,6 +25,8 @@ public class SurvivalLevel : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine("StartLevelCoolDown");
+        if (CoolDownIsEnd) 
         BeginRound();
     }
 
@@ -130,5 +134,27 @@ public class SurvivalLevel : MonoBehaviour
         });
         yield return new WaitForSeconds(0.4f);
         _resultCommandText.text = "";
+    }
+
+
+    private IEnumerator StartLevelCoolDown()
+    {
+        int timer = 3;
+        while (timer >= 0)
+        {
+            if(timer > 0)
+            _coolDownText.text = timer.ToString();
+            else
+            _coolDownText.text = "GO";
+            _coolDownText.transform.localScale = new Vector3(0.2f, 0.2f, 1f);
+            LeanTween.value(gameObject, 0.2f, 1f, 0.5f).setOnUpdate((float val) => {
+                _coolDownText.transform.localScale = new Vector3(val, val, 1f);
+            });
+            yield return new WaitForSeconds(1.3f);
+            _coolDownText.text = "";
+            timer--;
+        }
+        CoolDownIsEnd = true;
+        yield return null;
     }
 }
