@@ -18,6 +18,8 @@ public class SettingLocaler : MonoBehaviour
     private void Start()
     {
         _currentLanguages = PlayerPrefs.GetInt("LanguageNumber");
+        Localer.CurrentLocale = Localer.AllLanguages[_currentLanguages];
+        Localer.Init(Localer.CurrentLocale);
         _localerButton.image.sprite = _localeButtonSprites[_currentLanguages];
         ChangeLanguage();
         _localerButton.image.sprite = _localeButtonSprites[_currentLanguages];

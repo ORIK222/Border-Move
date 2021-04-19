@@ -7,10 +7,11 @@
   <String id="Volume">Громкость</String>
   <String id="Sound">Звуки</String>
   <String id="Music">Музыка</String>
-   <String id="Round">Раунд</String>
-  
-    <String id="Looser">Ты проиграл!</String>
-    <String id="Winer">Ты победил!</String>
+  <String id="Round">Раунд</String>
+  <String id="Time">Время</String>
+  <String id="Survival time"> Время выживания: </String>
+  <String id="Looser">Ты проиграл!</String>
+  <String id="Winer">Ты победил!</String>
     
   
   

@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0"?>
 <root>
-	<String id="play">Грати</String>
-  <String id="nosound">Без звуку</String>
-  <String id="Setting">Налаштування</String>
-  <String id="Language">Мова</String>
-  <String id="Volume">Гучність</String>
-  <String id="Sound">Звуки</String>
-  <String id="Music">Музика</String>
-   <String id="Round">Раунд</String>
-  
+	  <String id="play">Грати</String>
+    <String id="nosound">Без звуку</String>
+    <String id="Setting">Налаштування</String>
+    <String id="Language">Мова</String>
+    <String id="Volume">Гучність</String>
+    <String id="Sound">Звуки</String>
+    <String id="Music">Музика</String>
+    <String id="Round">Раунд</String>
+    <String id="Time">Час</String>
+    <String id="Survival time"> Час виживання: </String>
     <String id="Looser">Ти програв!</String>
     <String id="Winer">Ти виграв!</String>
   

@@ -9,7 +9,8 @@
     <String id="Sound">Sound</String>
     <String id="Music">Music</String>
     <String id="Round">Round</String>
-  
+    <String id="Time">Time</String>
+    <String id="Survival time"> Survival time: </String>
     <String id="Looser">You loose!</String>
     <String id="Winer">You win!</String>
   

@@ -44,7 +44,7 @@ public class EndGameWindow : MonoBehaviour {
         }
         else if (isSingle)
         {
-            _firstPlayerText.text = Localer.GetText("You survival time: " + Timer.CurrentTime);
+            _firstPlayerText.text = Localer.GetText("Survival time" + ": " + Timer.CurrentTime);
             _firstPlayerPanel.SetActive(true);
         }
             LeanTween.value(gameObject, _canvasGroup.alpha, 1f, 0.3f).setOnUpdate((float val) =>

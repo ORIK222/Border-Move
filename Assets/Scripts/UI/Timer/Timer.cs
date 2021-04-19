@@ -16,6 +16,7 @@ public class Timer : MonoBehaviour
     private void Start()
     {
         _timeText = GetComponent<TMP_Text>();
+        _timeText.text = Localer.GetText("Time");
     }
 
     private void FixedUpdate()
@@ -31,7 +32,7 @@ public class Timer : MonoBehaviour
         {
             _gameDuration += 1;
             _timeBeforeSeconds = 0;
-            _timeText.text = "Time: " + SecondsToMinutesConverter(_gameDuration);
+            _timeText.text = Localer.GetText("Time") + ": " + SecondsToMinutesConverter(_gameDuration);
         }
     }
 
