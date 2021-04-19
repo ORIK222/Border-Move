@@ -11,6 +11,9 @@
   
     <String id="Looser">Ты проиграл!</String>
     <String id="Winer">Ты победил!</String>
+    
+  
+  
   
     <String id="CMD.Empty_1">Подождите</String>
     <String id="CMD.OneFingerTap_1">Клик</String>

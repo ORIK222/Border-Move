@@ -17,7 +17,10 @@ public class SettingLocaler : MonoBehaviour
     [SerializeField] private Button _localerButton;
     private void Start()
     {
+        _currentLanguages = PlayerPrefs.GetInt("LanguageNumber");
+        _localerButton.image.sprite = _localeButtonSprites[_currentLanguages];
         ChangeLanguage();
+        _localerButton.image.sprite = _localeButtonSprites[_currentLanguages];
     }
 
     public void LocalerOnButtonClick()
@@ -28,6 +31,7 @@ public class SettingLocaler : MonoBehaviour
         _localerButton.image.sprite = _localeButtonSprites[_currentLanguages];
         Localer.CurrentLocale = Localer.AllLanguages[_currentLanguages];
         Localer.Init(Localer.CurrentLocale);
+        PlayerPrefs.SetInt("LanguageNumber", _currentLanguages);
         ChangeLanguage();
     }
 

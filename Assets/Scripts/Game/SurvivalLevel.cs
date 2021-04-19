@@ -13,14 +13,14 @@ public class SurvivalLevel : MonoBehaviour
 
     public static bool CoolDownIsEnd = false;
     private int _roundCounter;
-    private bool _endGame;
+    public static bool IsEndGame;
     private bool _roundActive;
 
     private CommandsManager.CommandType _lastCommand = CommandsManager.CommandType.OneFingerTap;
 
     private void Awake()
     {
-        _endGame = false;
+        IsEndGame = false;
     }
 
     private void Start()
@@ -31,9 +31,9 @@ public class SurvivalLevel : MonoBehaviour
 
     private void Update()
     {
-        if(!_endGame)
+        if(!IsEndGame)
         CheckBorderPosition();
-        if (!_roundActive || _endGame)
+        if (!_roundActive || IsEndGame)
         {
             return;
         }
@@ -45,7 +45,7 @@ public class SurvivalLevel : MonoBehaviour
 
     private void BeginRound()
     {
-        if (_endGame)
+        if (IsEndGame)
         {
             return;
         }
@@ -91,9 +91,9 @@ public class SurvivalLevel : MonoBehaviour
 
     private void CheckBorderPosition()
     {
-        if (_border.transform.position.x >= 1200)
+        if (_border.transform.position.x >= 1300)
         {
-            _endGame = true;
+            IsEndGame = true;
             Invoke("EndGame", 1f);
         }
     }

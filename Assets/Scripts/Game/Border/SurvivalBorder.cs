@@ -13,7 +13,7 @@ public class SurvivalBorder : MonoBehaviour
     private float _time;
     private float _tempTime = 0;
 
-    private int _liftingLevel = 25;
+    private int _liftingLevel = 30;
 
 
     private void Start()
@@ -22,7 +22,7 @@ public class SurvivalBorder : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!IsStop && SurvivalLevel.CoolDownIsEnd)
+        if (!IsStop && SurvivalLevel.CoolDownIsEnd && !SurvivalLevel.IsEndGame)
             Move();
         else if (IsStop)
             BorderUp(_liftingLevel);
@@ -42,7 +42,7 @@ public class SurvivalBorder : MonoBehaviour
     private void SpeedIncrease()
     {
         _time += 1 * Time.deltaTime;
-        if(_time - _tempTime > 3)
+        if(_time - _tempTime > 10)
         {
             _tempTime = _time;
             _speed += 1;
