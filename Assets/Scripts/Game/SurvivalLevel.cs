@@ -25,9 +25,8 @@ public class SurvivalLevel : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine("StartLevelCoolDown");
-        if (CoolDownIsEnd) 
-        BeginRound();
+        StartCoroutine("StartLevelCoolDown"); 
+        Invoke("BeginRound", 4f);
     }
 
     private void Update()
@@ -150,7 +149,7 @@ public class SurvivalLevel : MonoBehaviour
             LeanTween.value(gameObject, 0.2f, 1f, 0.5f).setOnUpdate((float val) => {
                 _coolDownText.transform.localScale = new Vector3(val, val, 1f);
             });
-            yield return new WaitForSeconds(1.3f);
+            yield return new WaitForSeconds(1f);
             _coolDownText.text = "";
             timer--;
         }
