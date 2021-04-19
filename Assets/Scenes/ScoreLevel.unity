@@ -922,7 +922,6 @@ GameObject:
   - component: {fileID: 533860183}
   - component: {fileID: 533860182}
   - component: {fileID: 533860181}
-  - component: {fileID: 533860180}
   - component: {fileID: 533860179}
   m_Layer: 5
   m_Name: TapZone
@@ -963,18 +962,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CommandIsRight: 0
---- !u!114 &533860180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 533860177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4753513a8a1e64db5bec106c6af3f834, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &533860181
 MonoBehaviour:
   m_ObjectHideFlags: 0
