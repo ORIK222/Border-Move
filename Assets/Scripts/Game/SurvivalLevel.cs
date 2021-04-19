@@ -31,8 +31,6 @@ public class SurvivalLevel : MonoBehaviour
 
     private void Update()
     {
-        if(!IsEndGame)
-        CheckBorderPosition();
         if (!_roundActive || IsEndGame)
         {
             return;
@@ -88,18 +86,9 @@ public class SurvivalLevel : MonoBehaviour
         Invoke("BeginRound", 0.4f);
         _player.EndRound();
     }
-
-    private void CheckBorderPosition()
+    public static void EndGame()
     {
-        if (_border.transform.position.x >= 1300)
-        {
-            IsEndGame = true;
-            Invoke("EndGame", 1f);
-        }
-    }
-
-    private void EndGame()
-    {
+        IsEndGame = true;
         GameManager.Instance.GameFlow.LooseGame();
     }
 
