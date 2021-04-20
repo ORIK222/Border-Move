@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -23,6 +24,18 @@ public class Timer : MonoBehaviour
     {
         if(SurvivalLevel.CoolDownIsEnd && !SurvivalLevel.IsEndGame)
         CalculationTime();
+        if (SurvivalLevel.IsEndGame)
+            CheckGameResult();
+    }
+
+    private void CheckGameResult()
+    {
+        if (_gameDuration > GameManager.Instance.data.SurvivalLevelTime)
+        {
+            GameManager.Instance.data.SurvivalLevelTime = _gameDuration;
+            Debug.Log(_currentTime);
+            GameManager.Instance.data.SurvivalLevelTimeInString = _currentTime;
+        }
     }
 
     private void CalculationTime()
@@ -41,17 +54,24 @@ public class Timer : MonoBehaviour
         string timeInString;
         int seconds, minutes;
         if (timeInSeconds <= 60)
-            return timeInSeconds.ToString();
+        {
+            if(timeInSeconds < 10)
+                _currentTime = "0:0" + timeInSeconds.ToString();
+            else
+                _currentTime = "0:" + timeInSeconds.ToString();
+            return _currentTime;
+        }
         else
         {
             minutes = timeInSeconds / 60;
             seconds = timeInSeconds % 60;
-            if(seconds >= 10)
+
+            if (seconds >= 10)
                 timeInString = minutes.ToString() + ":" + seconds;
             else
                 timeInString = minutes.ToString() + ":0" + seconds;
             _currentTime = timeInString;
-            return timeInString;
+            return _currentTime;
         }
     }
 }

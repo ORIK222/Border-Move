@@ -4,11 +4,8 @@ public class MenuController : MonoBehaviour
 {
 
     [SerializeField] private Transform _settingPanel;
+    [SerializeField] private Transform _resultPanel;
 
-    private void Start()
-    {
-        _settingPanel.gameObject.SetActive(false);
-    }
     public void StartButtonOnClick()
     {
         if (TypeGameSelector.IsSingle)
@@ -19,5 +16,9 @@ public class MenuController : MonoBehaviour
     public void SettingButtonOnClick()
     {
         _settingPanel.gameObject.SetActive(!_settingPanel.gameObject.activeSelf);
+    }
+    public void ResultButtonOnClick()
+    {
+        _resultPanel.gameObject.SetActive(!_resultPanel.gameObject.activeSelf);
     }
 }

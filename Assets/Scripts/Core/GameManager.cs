@@ -17,7 +17,9 @@ public class GameManager : Singleton<GameManager>
 	public EventManager EventManager;
 	public bool allowQuit;
     public bool IsPlayerMorfing;
-	
+	public Data data;
+
+	private string _json;
 	public UserData Player {
 		get {
 			return Settings.User;
@@ -26,6 +28,12 @@ public class GameManager : Singleton<GameManager>
 	
 	public void Initialize ()
 	{
+		_json = PlayerPrefs.GetString("Json");
+
+		if (_json == string.Empty)
+			data = new Data();
+		else data = JsonUtility.FromJson<Data>(_json);
+
 		EventManager = new EventManager ();
 		Settings = new ZPlayerSettings ();
 		GameFlow = new GameFlow ();
@@ -47,7 +55,8 @@ public class GameManager : Singleton<GameManager>
 		allowQuit = true;
 		if (allowQuit) 
 		{
-			//TODO: Записати налаштування
+			_json = JsonUtility.ToJson(data);
+			PlayerPrefs.SetString("Json", _json);
 			Instance.GameFlow.ExitGame ();
 		} 
 		else 

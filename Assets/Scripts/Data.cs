@@ -3,17 +3,19 @@
 [Serializable]
 public class Data
 {
-    private float _scoreLevelResult;
-    private float _survivalLevelTime;
-    private int _singleLevelGameCount;
-    private int _cooperativeLevelGameCount;
-    private string _language;
-    Data()
+    public float ScoreLevelResult;
+    public float SurvivalLevelTime;
+    public string SurvivalLevelTimeInString;
+    public int SingleLevelGameCount;
+    public int CooperativeLevelGameCount;
+    public int Language;
+    public Data()
     {
-        _scoreLevelResult = 0;
-        _survivalLevelTime = 0;
-        _singleLevelGameCount = 0;
-        _cooperativeLevelGameCount = 0;
-        _language = "English";
+        SurvivalLevelTimeInString = string.Empty;
+        ScoreLevelResult = 0;
+        SurvivalLevelTime = 0;
+        SingleLevelGameCount = 0;
+        CooperativeLevelGameCount = 0;
+        Language = 1;
     }
 }

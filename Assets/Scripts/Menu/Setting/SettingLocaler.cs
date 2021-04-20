@@ -10,19 +10,20 @@ public class SettingLocaler : MonoBehaviour
     [SerializeField] private TMP_Text _volumeTitleText;
     [SerializeField] private TMP_Text _soundTitleText;
     [SerializeField] private TMP_Text _musicTitleText;
-
+    [SerializeField] private Result _result;
     private int _currentLanguages = 0;
 
     [SerializeField] private List<Sprite> _localeButtonSprites;
     [SerializeField] private Button _localerButton;
     private void Start()
     {
-        _currentLanguages = PlayerPrefs.GetInt("LanguageNumber");
+        _currentLanguages = GameManager.Instance.data.Language;
+
         Localer.CurrentLocale = Localer.AllLanguages[_currentLanguages];
         Localer.Init(Localer.CurrentLocale);
         _localerButton.image.sprite = _localeButtonSprites[_currentLanguages];
-        ChangeLanguage();
-        _localerButton.image.sprite = _localeButtonSprites[_currentLanguages];
+        ChangeText();
+        _result.SetResultData();
     }
 
     public void LocalerOnButtonClick()
@@ -33,11 +34,12 @@ public class SettingLocaler : MonoBehaviour
         _localerButton.image.sprite = _localeButtonSprites[_currentLanguages];
         Localer.CurrentLocale = Localer.AllLanguages[_currentLanguages];
         Localer.Init(Localer.CurrentLocale);
-        PlayerPrefs.SetInt("LanguageNumber", _currentLanguages);
-        ChangeLanguage();
+        GameManager.Instance.data.Language = _currentLanguages;
+        ChangeText();
+        _result.SetResultData();
     }
 
-    public void ChangeLanguage()
+    public void ChangeText()
     {
         _settingTitleText.text = Localer.GetText("Setting");
         _languageTitleText.text = Localer.GetText("Language");

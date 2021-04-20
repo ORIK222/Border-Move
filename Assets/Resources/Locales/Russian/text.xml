@@ -12,8 +12,11 @@
   <String id="Survival time"> Время выживания: </String>
   <String id="Looser">Ты проиграл!</String>
   <String id="Winer">Ты победил!</String>
-    
-  
+
+  <String id="SingleCount">Количество игр в одиночку </String>
+  <String id="DuoCount">Количество игр вдвоем </String>
+  <String id="BestTime">Лучшее время выживания</String>
+  <String id="BestScore">Лучший счет </String>
   
   
     <String id="CMD.Empty_1">Подождите</String>
@@ -25,7 +28,7 @@
     <String id="CMD.RightFlick_1">Свайп вправо</String>
     <String id="CMD.UpFlick_1">Свайп вверх</String>
     <String id="CMD.DownFlick_1">Свайп вниз</String>
-	<String id="CMD.TwoFingerLongTap_1">Длинный клик двумя пальцами</String>
+	  <String id="CMD.TwoFingerLongTap_1">Длинный клик двумя пальцами</String>
 
     <String id="CMD.Empty_2">Нечего не делайте</String>
     <String id="CMD.OneFingerTap_2">Клик одним пальцем</String>

@@ -12,7 +12,12 @@
     <String id="Survival time"> Час виживання: </String>
     <String id="Looser">Ти програв!</String>
     <String id="Winer">Ти виграв!</String>
-  
+
+    <String id="SingleCount">Кількість ігор поодинці </String>
+    <String id="DuoCount">Кількість ігор вдвох </String>
+    <String id="BestTime">Кращий час виживання</String>
+    <String id="BestScore">Кращий рахунок </String>
+
     <String id="CMD.Empty_1">Почекайте</String>
     <String id="CMD.OneFingerTap_1">Клік</String>
     <String id="CMD.TwoFingerTap_1">Клік двума пальцями</String>

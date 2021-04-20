@@ -117,6 +117,9 @@ public class ScoreLevel : MonoBehaviour
 
     private void EndGame()
     {
+        GameManager.Instance.data.SingleLevelGameCount += 1;
+        if (_scoreNumber > GameManager.Instance.data.ScoreLevelResult)
+            GameManager.Instance.data.ScoreLevelResult = _scoreNumber;
         GameManager.Instance.GameFlow.LooseGame();
     }
 

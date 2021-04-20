@@ -133,6 +133,7 @@ public class Arbiter : MonoBehaviour
 
     private void LooseGame()
     {
+        GameManager.Instance.data.CooperativeLevelGameCount += 1;
         GameManager.Instance.GameFlow.LooseGame();
     }
 

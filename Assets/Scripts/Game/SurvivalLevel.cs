@@ -89,6 +89,7 @@ public class SurvivalLevel : MonoBehaviour
     public static void EndGame()
     {
         IsEndGame = true;
+        GameManager.Instance.data.SingleLevelGameCount += 1;
         GameManager.Instance.GameFlow.LooseGame();
     }
 
