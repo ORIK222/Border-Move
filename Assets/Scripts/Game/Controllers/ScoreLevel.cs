@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ScoreLevel : MonoBehaviour
+public class ScoreLevel : MonoBehaviour, ILevelController
 {
 
     [SerializeField] private SinglePlayer _player;
@@ -15,38 +15,13 @@ public class ScoreLevel : MonoBehaviour
     [SerializeField] private int _scoreNumberForWin = 50000;
     [SerializeField] private TMP_Text _resultRoundText;
 
-    private float _roundEndTimer;
-    private int _roundCounter;
-    private bool _roundActive;
+    private Round _round;
     private bool _endGame;
     private int _scoreNumber = 100;
 
     private CommandsManager.CommandType _lastCommand = CommandsManager.CommandType.OneFingerTap;
-
-    private void Awake()
-    {
-        _roundActive = false;
-        _endGame = false;
-    }
-
-    private void Start()
-    {
-        BeginRound();
-    }
-
-    private void Update()
-    {
-        if (!_roundActive || _endGame)
-        {
-            return;
-        }
-        if (_player.GetIsPlayerEnded())
-        {
-            EndRound();
-        }
-    }
-
-    private void BeginRound()
+    
+    public void BeginRound()
     {
         if (_endGame)
         {
@@ -54,18 +29,17 @@ public class ScoreLevel : MonoBehaviour
         }
         StartCoroutine(BeginRoundCoroutine());
     }
-
-    private IEnumerator BeginRoundCoroutine()
+    public IEnumerator BeginRoundCoroutine()
     {
         _timeBar.SignalGetReady();
-        _roundNumberText.RoundCountChange(_roundCounter);
+        _roundNumberText.RoundCountChange(_round.Count);
         yield return new WaitForSeconds(1f);
         _roundNumberText.ClearText();
 
         List<CommandsManager.CommandType> nextMoves = new List<CommandsManager.CommandType>();
         for (int i = 0; i < 5; i++)
         {
-            nextMoves = CommandsManager.generateMoves(_roundCounter);
+            nextMoves = CommandsManager.generateMoves(_round.Count);
             if (nextMoves[0] != _lastCommand && nextMoves[0] != CommandsManager.CommandType.TwoFingerTap && nextMoves[0] != CommandsManager.CommandType.TwoFingerLongTap)
             {
                 break;
@@ -73,7 +47,7 @@ public class ScoreLevel : MonoBehaviour
         }
 
         int variation = 1; 
-        if (_roundCounter > 10)
+        if (_round.Count > 10)
         {
             variation = Random.Range(1, 5); //4+1
         }
@@ -82,48 +56,29 @@ public class ScoreLevel : MonoBehaviour
         _lastCommand = nextMoves[0];
         yield return new WaitForSeconds(0.6f);
         _timeBar.StartRound(_roundTime);
-        _roundEndTimer = Time.time + _roundTime;
-        _roundActive = true;
+        _round.IsActive = true;
     }
-
-    private void EndRound()
+    public void EndRound()
     {
-        _roundActive = false;
-        var winer = SelectRoundWinner();
-        if (!winer)
-        {
-            Equality();
-        }
-        else
-        {
-            if (winer)
-                CheckScoreCount();
-            _player.MakeRoundResult();
-        }
-        _roundCounter += 1;
+        _round.IsActive = false;
+        var winer = CheckRoundResult();
+        if (winer)
+            CheckScoreCount();
+
+        _player.MakeRoundResult();
+        _round.Count += 1;
         _roundTime -= _roundTime / 50;
         Invoke("BeginRound", 1f);
         _player.EndRound();
-    }
-
-    private void CheckScoreCount()
-    {
-        if (_player.Score >= _scoreNumberForWin)
-        {
-            _endGame = true;
-            Invoke("EndGame", 2f);
-        }
-    }
-
-    private void EndGame()
+    }    
+    public void EndGame()
     {
         GameManager.Instance.data.SingleLevelGameCount += 1;
         if (_scoreNumber > GameManager.Instance.data.ScoreLevelResult)
             GameManager.Instance.data.ScoreLevelResult = _scoreNumber;
         GameManager.Instance.GameFlow.LooseGame();
     }
-
-    private SinglePlayer SelectRoundWinner()
+    public Player CheckRoundResult()
     {
         SinglePlayer winer = null;
         bool isWin = !_player.GetIsRoundFailed();
@@ -140,6 +95,40 @@ public class ScoreLevel : MonoBehaviour
         }
         return winer;
     }
+
+    private void Awake()
+    {
+        _round = new Round(_roundTime);
+    }
+
+    private void Start()
+    {
+        BeginRound();
+    }
+
+    private void Update()
+    {
+        if (!_round.IsActive || _endGame)
+        {
+            return;
+        }
+        if (_player.GetIsPlayerEnded())
+        {
+            EndRound();
+        }
+        if (_round.IsActive)
+            RoundTimeDecrease();
+    }
+
+    private void CheckScoreCount()
+    {
+        if (_player.Score >= _scoreNumberForWin)
+        {
+            _endGame = true;
+            Invoke("EndGame", 2f);
+        }
+    }
+
     private IEnumerator ShowResultRoundText(string result, bool isWin)
     {
         if (isWin)
@@ -155,10 +144,11 @@ public class ScoreLevel : MonoBehaviour
         yield return new WaitForSeconds(0.7f);
         _resultRoundText.text = "";
     }
-    private void Equality()
+
+    private void RoundTimeDecrease()
     {
-        Debug.Log("!Equality!");
+        _round.Duration -= 1 * Time.deltaTime;
+        if (_round.Duration <= 0)
+            EndRound();
     }
-
-
 }

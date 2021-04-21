@@ -3015,8 +3015,8 @@ MonoBehaviour:
   _timeBar: {fileID: 404529290}
   _border: {fileID: 115646483}
   _roundNumberText: {fileID: 757881977}
-  RoundTime: 4
-  MaxBorderSteps: 10
+  _maxBorderSteps: 10
+  _roundTime: 4
 --- !u!4 &1775442559
 Transform:
   m_ObjectHideFlags: 0

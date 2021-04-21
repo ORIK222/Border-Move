@@ -11,7 +11,7 @@ public class Data
     public int Language;
     public Data()
     {
-        SurvivalLevelTimeInString = string.Empty;
+        SurvivalLevelTimeInString = "00:00";
         ScoreLevelResult = 0;
         SurvivalLevelTime = 0;
         SingleLevelGameCount = 0;

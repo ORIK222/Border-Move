@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Arbiter : MonoBehaviour
+public class Arbiter : MonoBehaviour, ILevelController
 {
 
     [SerializeField] private CooperativePlayer _firstPlayer;
@@ -12,64 +12,34 @@ public class Arbiter : MonoBehaviour
     [SerializeField] private TimeBarController _timeBar;
     [SerializeField] private TwoPlayerBorderController _border;
     [SerializeField] private RoundCountDisplayer _roundNumberText;
-    [SerializeField] private float RoundTime;
-    [SerializeField] private int MaxBorderSteps = 10;
+    [SerializeField] private int _maxBorderSteps = 10;
+    [SerializeField] private float _roundTime;
 
-    private float RoundEndTimer;
-    private int _roundCounter;
-    private bool _roundActive;
+    private Round _round;
     private bool _looseGame;
     private int _currentBorderPos;
     private CommandsManager.CommandType _lastCommand = CommandsManager.CommandType.OneFingerTap;
-
-    private void Awake()
-    {
-        _roundActive = false;
-        _looseGame = false;
-    }
-
-    private void Start()
-    {
-        BeginRound();
-    }
-
-    private void Update()
-    {
-        if (!_roundActive || _looseGame)
-        {
-            return;
-        }
-        if (_firstPlayer.GetIsPlayerEnded() && _secondPlayer.GetIsPlayerEnded())
-        {
-            EndRound();
-        }
-
-        if (Time.time > RoundEndTimer)
-        {
-            EndRound();
-        }
-    }
-
-    private void BeginRound()
+   
+    public void BeginRound()
     {
         if (_looseGame)
         {
             return;
         }
         StartCoroutine(BeginRoundCoroutine());
-    }
-
-    private IEnumerator BeginRoundCoroutine()
+    } 
+    public IEnumerator BeginRoundCoroutine()
     {
+        _round.Duration = _roundTime;
         _timeBar.SignalGetReady();
-        _roundNumberText.RoundCountChange(_roundCounter);
+        _roundNumberText.RoundCountChange(_round.Count);
         yield return new WaitForSeconds(1f);
         _roundNumberText.ClearText();
 
         List<CommandsManager.CommandType> nextMoves = new List<CommandsManager.CommandType>();
         for (int i = 0; i < 5; i++)
         {
-            nextMoves = CommandsManager.generateMoves(_roundCounter);
+            nextMoves = CommandsManager.generateMoves(_round.Count);
             if (nextMoves[0] != _lastCommand && nextMoves[0] != CommandsManager.CommandType.TwoFingerTap && nextMoves[0] != CommandsManager.CommandType.TwoFingerLongTap)
             {
                 break;
@@ -77,7 +47,7 @@ public class Arbiter : MonoBehaviour
         } // генерація доступних для наступного раунду рухів
 
         int variation = 1; // один з варіантів завдання для гравця
-        if (_roundCounter > 10)
+        if (_round.Count> 10)
         {
             variation = Random.Range(1, 5); //4+1
         }
@@ -87,57 +57,31 @@ public class Arbiter : MonoBehaviour
 
         _lastCommand = nextMoves[0];
         yield return new WaitForSeconds(0.6f);
-        _timeBar.StartRound(RoundTime);
-        RoundEndTimer = Time.time + RoundTime;
-        _roundActive = true;
-    }
-
-    private void EndRound()
+        _timeBar.StartRound(_roundTime);
+        _round.IsActive = true;
+    }    
+    public void EndRound()
     {
-        _roundActive = false;
-        var winer = SelectRoundWinner();
-        if (!winer)
-        {
-            Equality();
-        }
-        else
-        {
-            if (winer == _firstPlayer)
-                MoveBorder(+1);
-            else if (winer == _secondPlayer)
-                MoveBorder(-1);
-            else
-                Equality();
+        _round.IsActive = false;
+        var winer = CheckRoundResult();
+        if (winer == _firstPlayer)
+            MoveBorder(+1);
+        else if (winer == _secondPlayer)
+            MoveBorder(-1);
+        _firstPlayer.MakeRoundResult();
+        _secondPlayer.MakeRoundResult();
+        _round.Count += 1;
 
-            _firstPlayer.MakeRoundResult();
-            _secondPlayer.MakeRoundResult();
-        }
-        _roundCounter += 1;
-        //todo гавнокод
         Invoke("BeginRound", 1f);
         _firstPlayer.EndRound();
         _secondPlayer.EndRound();
-        //
     }
-
-    private void MoveBorder(int step)
-    {
-        _currentBorderPos += step;
-        _border.MoveBorder(step);
-        if (Mathf.Abs(_currentBorderPos) >= MaxBorderSteps)
-        {
-            _looseGame = true;
-            Invoke("LooseGame", 2f);
-        }
-    }
-
-    private void LooseGame()
+    public void EndGame()
     {
         GameManager.Instance.data.CooperativeLevelGameCount += 1;
         GameManager.Instance.GameFlow.LooseGame();
     }
-
-    private CooperativePlayer SelectRoundWinner()
+    public Player CheckRoundResult()
     {
         CooperativePlayer winer = null;
         bool p0Win = !_firstPlayer.GetIsRoundFailed();
@@ -154,24 +98,46 @@ public class Arbiter : MonoBehaviour
         }
         return winer;
     }
-    private void Equality()
+
+    private void Awake()
     {
-        Debug.Log("!Equality!");
+        _round = new Round(_roundTime);
     }
 
+    private void Start()
+    {
+        BeginRound();
+    }
 
-}
+    private void Update()
+    {
+        if (!_round.IsActive || _looseGame)
+        {
+            return;
+        }
 
-// CHEAT
-/*
-i = Random.Range(0, 2);
-if (i == 0)
-{
-    nextMoves = new List<CommandsManager.CommandType>();
-    nextMoves.Add(CommandsManager.CommandType.OneFingerTap);
-} else {
-    nextMoves = new List<CommandsManager.CommandType>();
-    nextMoves.Add(CommandsManager.CommandType.TwoFingerTap);            
+        if (_round.IsActive)
+            RoundTimeDecrease();
+
+        if (_firstPlayer.GetIsPlayerEnded() && _secondPlayer.GetIsPlayerEnded())
+        {
+            EndRound();
+        }
+    }
+    private void MoveBorder(int step)
+    {
+        _currentBorderPos += step;
+        _border.MoveBorder(step);
+        if (Mathf.Abs(_currentBorderPos) >= _maxBorderSteps)
+        {
+            _looseGame = true;
+            Invoke("EndGame", 2f);
+        }
+    }
+    private void RoundTimeDecrease()
+    {
+        _round.Duration -= 1 * Time.deltaTime;
+        if (_round.Duration <= 0)
+            EndRound();
+    }
 }
-*/
-//
