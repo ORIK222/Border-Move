@@ -8,10 +8,6 @@ public class Result : MonoBehaviour
     [SerializeField] private TMP_Text _bestTimeText;
     [SerializeField] private TMP_Text _bestScoreText;
 
-    private void Start()
-    {
-        SetResultData();
-    }
     public void SetResultData()
     {
         _singleLevelCountText.text = Localer.GetText("SingleCount") + ": " + GameManager.Instance.data.SingleLevelGameCount.ToString();
@@ -19,9 +15,13 @@ public class Result : MonoBehaviour
         _bestTimeText.text = Localer.GetText("BestTime") + ": " + GameManager.Instance.data.SurvivalLevelTimeInString;
         _bestScoreText.text = Localer.GetText("BestScore") + ": " + GameManager.Instance.data.ScoreLevelResult.ToString();
     }
-
     public void Close()
     {
         gameObject.SetActive(false);
+    }
+
+    private void Start()
+    {
+        SetResultData();
     }
 }

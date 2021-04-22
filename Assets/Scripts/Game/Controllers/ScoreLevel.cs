@@ -11,16 +11,14 @@ public class ScoreLevel : MonoBehaviour, ILevelController
     [SerializeField] private SinglePlayer _player;
     [SerializeField] private TimeBarController _timeBar;
     [SerializeField] private RoundCountDisplayer _roundNumberText;
-
     [SerializeField] private float _roundTime;
     [SerializeField] private TMP_Text _resultRoundText;
-
+    private CommandsManager.CommandType _lastCommand = CommandsManager.CommandType.OneFingerTap;
     private Round _round;
+
     private bool _endGame;
     private int _scoreNumber = 100;
 
-    private CommandsManager.CommandType _lastCommand = CommandsManager.CommandType.OneFingerTap;
-    
     public void BeginRound()
     {
         if (_endGame)
@@ -103,12 +101,10 @@ public class ScoreLevel : MonoBehaviour, ILevelController
     {
         _round = new Round(_roundTime);
     }
-
     private void Start()
     {
         BeginRound();
     }
-
     private void Update()
     {
         if (!_round.IsActive || _endGame)
@@ -125,7 +121,6 @@ public class ScoreLevel : MonoBehaviour, ILevelController
         if (Heart.isEmpty)
             Invoke("EndGame", 1f);
     }
-
     private IEnumerator ShowResultRoundText(string result, bool isWin)
     {
         if (isWin)
@@ -141,7 +136,6 @@ public class ScoreLevel : MonoBehaviour, ILevelController
         yield return new WaitForSeconds(0.7f);
         _resultRoundText.text = "";
     }
-
     private void RoundTimeDecrease()
     {
         _round.Duration -= 1 * Time.deltaTime;

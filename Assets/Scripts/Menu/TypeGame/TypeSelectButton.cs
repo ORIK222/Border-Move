@@ -2,8 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class TypeSelectButton : MonoBehaviour
-{
-    private Image _image;
+{    
     public Image image
     {
         get { return _image;}
@@ -11,12 +10,13 @@ public class TypeSelectButton : MonoBehaviour
     }
     public Sprite SinglePlayerSprite;
     public Sprite TwoPlayerSprite;
+    private Image _image;
+
 
     private void Awake()
     {
         _image = GetComponent<Image>();
     }
-
     private void Start()
     {
         if (TypeGameSelector.IsSingle)

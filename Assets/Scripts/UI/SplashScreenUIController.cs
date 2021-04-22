@@ -8,25 +8,21 @@ public class SplashScreenUIController : MonoBehaviour {
 	[SerializeField] private Slider _slider;
 	private AsyncOperation _async;
 
-	void Awake () {
+	private void Awake () {
 		EventManager.OnAsyncSceneLoadEvent += OnAsyncSceneLoad;
         Invoke("Transit", 0.5f);
-    }
-	
-    void Transit()
+    }	
+    private void Transit()
     {
         GameManager.Instance.GameFlow.TransitToScene(UIConsts.SCENE_ID.MENU);
     }
-
-	void OnAsyncSceneLoad(EventData e) {
+	private void OnAsyncSceneLoad(EventData e) {
 		_async = (AsyncOperation)e.Data["asyncOperation"];
 	}
-
-	void OnDestroy() {
+	private void OnDestroy() {
 		EventManager.OnAsyncSceneLoadEvent -= OnAsyncSceneLoad;
 	}
-
-	void Update() {
+	private void Update() {
 		if (_async != null) {
 			_slider.value = _async.progress;
 		}

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CommandsManager : MonoBehaviour
 {
-
     public enum CommandType
     {
         Empty = 0,
@@ -18,15 +17,15 @@ public class CommandsManager : MonoBehaviour
         DownFlick,
         TwoFingerLongTap,
     }
-
     public Queue<CommandType> Commands;
     public bool CommandIsRight;
-    private float _lastActionTime;
+    
     public float LastActionTime
     {
         get { return _lastActionTime; }
         set { _lastActionTime = value; }
     }
+    private float _lastActionTime;
 
     public void StartRound(List<CommandType> commands)
     {
@@ -36,7 +35,6 @@ public class CommandsManager : MonoBehaviour
             Commands.Enqueue(command);
         }
     }
-
     public void CheckCurrentCommand(CommandType currentCommand)
     {
         LastActionTime = Time.time;
@@ -80,6 +78,7 @@ public class CommandsManager : MonoBehaviour
         }
         return nextTask;
     }
+
     private static CommandType getRandomCommand(CommandType from, CommandType to)
     {
         return (CommandType)Random.Range((int)from, (int)to + 1);

@@ -2,14 +2,18 @@ using UnityEngine;
 using TMPro;
 
 public class Multiplier : MonoBehaviour
-{
+{    
+    public enum MultiplierType
+    {
+        Wrong = -1,
+        Good = 0,
+        Great = 1,
+        Excellent = 2
+    }
+
     public static int multiplierCount = 1;
     private MultiplierDisplayer _multiplierDisplayer;
 
-    private void Awake()
-    {
-        _multiplierDisplayer = transform.GetChild(0).GetComponent<MultiplierDisplayer>();
-    }
     public void ChangeMultiplier(MultiplierType type)
     {
 
@@ -23,11 +27,10 @@ public class Multiplier : MonoBehaviour
         }
         _multiplierDisplayer.SetMultiplierText(multiplierCount);
     }
-    public enum MultiplierType
+    private void Awake()
     {
-        Wrong = -1,
-        Good = 0,
-        Great = 1,
-        Excellent = 2
+        _multiplierDisplayer = transform.GetChild(0).GetComponent<MultiplierDisplayer>();
     }
+
+
 }

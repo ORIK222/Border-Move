@@ -5,24 +5,13 @@ using UnityEngine.UI;
 
 public class EndGameWindow : MonoBehaviour {
 
-    [SerializeField] TwoPlayerBorderController _border;
-    [SerializeField] CanvasGroup _canvasGroup;
-    [SerializeField] Button _buttonRestart;
-    [SerializeField] Text _firstPlayerText;
-    [SerializeField] Text _secondPlayerText;
-    [SerializeField] GameObject _firstPlayerPanel;
-    [SerializeField] GameObject _secondPlayerPanel;
-
-    void Start () {
-        _canvasGroup.alpha = 0f;
-        EnableCanvasInteraction(false);
-    }
-
-    void EnableCanvasInteraction(bool state) {
-        _canvasGroup.interactable = state;
-        _canvasGroup.blocksRaycasts = state;
-        _buttonRestart.interactable = state;        
-    }
+    [SerializeField] private TwoPlayerBorderController _border;
+    [SerializeField] private CanvasGroup _canvasGroup;
+    [SerializeField] private Button _buttonRestart;
+    [SerializeField] private Text _firstPlayerText;
+    [SerializeField] private Text _secondPlayerText;
+    [SerializeField] private GameObject _firstPlayerPanel;
+    [SerializeField] private GameObject _secondPlayerPanel;
 
     public void Show(bool isSingle = false, bool IsScore = false) {
         if (!isSingle)
@@ -63,8 +52,19 @@ public class EndGameWindow : MonoBehaviour {
                 EnableCanvasInteraction(true);
             });
     }
-
     public void ButtonRestartOnClick() {
         GameManager.Instance.GameFlow.RestartGame();
     }
+
+    private void Start () {
+        _canvasGroup.alpha = 0f;
+        EnableCanvasInteraction(false);
+    }
+    private void EnableCanvasInteraction(bool state) 
+    {
+        _canvasGroup.interactable = state;
+        _canvasGroup.blocksRaycasts = state;
+        _buttonRestart.interactable = state;        
+    }
+  
 }

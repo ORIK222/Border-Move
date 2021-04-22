@@ -105,7 +105,6 @@ public class SurvivalLevel : MonoBehaviour, ILevelController
         }
     }
 
-
     private IEnumerator ShowResultRoundText(string result, bool isWin)
     {
         if (isWin)

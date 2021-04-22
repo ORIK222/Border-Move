@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    private static string _currentTime;
     public static string CurrentTime
     {
         get => _currentTime;
         private set { }
     }
+    
+    [SerializeField] private int _gameDuration = 0;
+    private static string _currentTime;
     private TMP_Text _timeText;
     private float _timeBeforeSeconds = 0;
-    [SerializeField] private int _gameDuration = 0;
 
     private void Start()
     {
         _timeText = GetComponent<TMP_Text>();
         _timeText.text = Localer.GetText("Time");
     }
-
     private void FixedUpdate()
     {
         if(SurvivalLevel.CoolDownIsEnd && !SurvivalLevel.IsEndGame)
@@ -27,7 +27,6 @@ public class Timer : MonoBehaviour
         if (SurvivalLevel.IsEndGame)
             CheckGameResult();
     }
-
     private void CheckGameResult()
     {
         if (_gameDuration > GameManager.Instance.data.SurvivalLevelTime)
@@ -36,7 +35,6 @@ public class Timer : MonoBehaviour
             GameManager.Instance.data.SurvivalLevelTimeInString = _currentTime;
         }
     }
-
     private void CalculationTime()
     {
         _timeBeforeSeconds += 1 * Time.deltaTime;
@@ -47,7 +45,6 @@ public class Timer : MonoBehaviour
             _timeText.text = Localer.GetText("Time") + ": " + SecondsToMinutesConverter(_gameDuration);
         }
     }
-
     private string SecondsToMinutesConverter(int timeInSeconds)
     {
         string timeInString;

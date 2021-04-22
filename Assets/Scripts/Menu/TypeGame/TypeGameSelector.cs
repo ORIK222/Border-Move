@@ -5,15 +5,10 @@ public class TypeGameSelector : MonoBehaviour
 {
     public static bool IsSingle;
     public static bool IsScore;
+
     [SerializeField] private TypeSelectButton _typeSelectButton;
     private Animator _animator;
 
-    private void Start()
-    {
-        _animator = GetComponent<Animator>();
-        IsSingle = false;
-        _typeSelectButton.image.sprite = _typeSelectButton.TwoPlayerSprite;
-    }
     public void TypeSelectButtonOnClick()
     {
         IsSingle = !IsSingle;
@@ -28,4 +23,12 @@ public class TypeGameSelector : MonoBehaviour
             _typeSelectButton.image.sprite = _typeSelectButton.TwoPlayerSprite;
         }
     }
+
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+        IsSingle = false;
+        _typeSelectButton.image.sprite = _typeSelectButton.TwoPlayerSprite;
+    }
+  
 }

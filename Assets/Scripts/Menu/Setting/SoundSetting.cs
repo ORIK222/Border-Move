@@ -12,18 +12,17 @@ public class SoundSetting : MonoBehaviour
         get { return _musicVolume; }
         private set { }
     }
+
     private void Start()
     {
         _soundSlider.value = MusicManager.MusicVolume;
         _musicSlider.value = MusicManager.MusicVolume;
         _musicVolume = _musicSlider.value;
     }
-
     private void Update()
     {
         SetVolume();
     }
-
     private void SetVolume()
     {
 

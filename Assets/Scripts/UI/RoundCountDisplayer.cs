@@ -5,12 +5,7 @@ public class RoundCountDisplayer : MonoBehaviour
 {
     private TMP_Text _text;
     private Vector3 _tempScale;
-
-    private void Awake()
-    {
-        _text = GetComponent<TMP_Text>();        
-    }
-
+    
     public void RoundCountChange(int roundCounter)
     {
         _text.transform.localScale = new Vector3(0.2f, 0.2f, 1f);
@@ -20,9 +15,14 @@ public class RoundCountDisplayer : MonoBehaviour
             _text.transform.localScale = _tempScale;
         });
     }
-
     public void ClearText()
     {
         _text.text = "";
     }
+
+    private void Awake()
+    {
+        _text = GetComponent<TMP_Text>();        
+    }
+
 }

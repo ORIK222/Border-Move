@@ -4,21 +4,20 @@ using TouchScript.Gestures;
 public class GesturesHandler : MonoBehaviour
 {
 
-    [SerializeField] TapGesture _tap1Gesture;
-    [SerializeField] TapGesture _tap2Gesture;
-    [SerializeField] FlickGesture _horizontalFlick;
-    [SerializeField] LongPressGesture _longPres1Gesture;
-    [SerializeField] LongPressGesture _longPres2Gesture;
-    [SerializeField] int _playerNum;
-    private CommandsManager _commandManager;
+    [SerializeField] private TapGesture _tap1Gesture;
+    [SerializeField] private TapGesture _tap2Gesture;
+    [SerializeField] private FlickGesture _horizontalFlick;
+    [SerializeField] private LongPressGesture _longPres1Gesture;
+    [SerializeField] private LongPressGesture _longPres2Gesture;
+    [SerializeField] private int _playerNum;    
     [SerializeField] private Vector2 _orientation;
+    private CommandsManager _commandManager;
 
-    void Start()
+    private void Start()
     {
         _commandManager = GetComponent<CommandsManager>();
         _tap2Gesture.AddFriendlyGesture(_tap1Gesture);
     }
-
     private void OnEnable()
     {
         _tap1Gesture.Tapped += tap1GestureHandler;
@@ -29,7 +28,6 @@ public class GesturesHandler : MonoBehaviour
         _longPres1Gesture.LongPressed += longPres1GestureHandler;
         _longPres2Gesture.LongPressed += longPres2GestureHandler;
     }
-
     private void OnDisable()
     {
         _tap1Gesture.Tapped -= tap1GestureHandler;
@@ -40,33 +38,27 @@ public class GesturesHandler : MonoBehaviour
         _longPres1Gesture.LongPressed -= longPres1GestureHandler;
         _longPres2Gesture.LongPressed -= longPres2GestureHandler;
     }
-
     private void tap1GestureHandler(object sender, System.EventArgs e)
     {
         HandleTapEvent(1);
     }
-
     private void tap2GestureHandler(object sender, System.EventArgs e)
     {
         HandleTapEvent(2);
     }
-
     private void flickHandler(object sender, System.EventArgs e)
     {
         HandleFlickEvent(_horizontalFlick.ScreenFlickVector);
     }
-
     private void longPres1GestureHandler(object sender, System.EventArgs e)
     {
         LongPresGestureHandler(1);
     }
-
     private void longPres2GestureHandler(object sender, System.EventArgs e)
     {
         LongPresGestureHandler(2);
     }
-
-    void LongPresGestureHandler(int touchCount)
+    private void LongPresGestureHandler(int touchCount)
     {
         if (touchCount == 1)
         {
@@ -77,9 +69,7 @@ public class GesturesHandler : MonoBehaviour
             _commandManager.CheckCurrentCommand(CommandsManager.CommandType.TwoFingerLongTap);
         }
     }
-
-
-    void HandleFlickEvent(Vector2 direction)
+    private void HandleFlickEvent(Vector2 direction)
     {
         Vector2 absDirection = new Vector2(Mathf.Abs(direction.x), Mathf.Abs(direction.y));
         if (absDirection.x > absDirection.y)
@@ -113,8 +103,7 @@ public class GesturesHandler : MonoBehaviour
             }
         }
     }
-
-    void HandleTapEvent(int tapCount)
+    private void HandleTapEvent(int tapCount)
     {
         if ( tapCount == 1 )
         {

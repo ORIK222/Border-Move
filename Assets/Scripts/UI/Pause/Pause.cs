@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
-
     [SerializeField] private Sprite _volumeOnSprite;
     [SerializeField] private Sprite _volumeOffSprite;
     [SerializeField] private Button _volumeOnOffButton;
@@ -20,7 +19,6 @@ public class Pause : MonoBehaviour
         Time.timeScale = 1f;
         GameManager.Instance.GameFlow.TransitToScene(UIConsts.SCENE_ID.MENU);
     }
-
     public void VolumeOnOffButtonOnClick()
     {
         if (_volumeOnOffButton.image.sprite == _volumeOnSprite)

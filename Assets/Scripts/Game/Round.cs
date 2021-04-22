@@ -11,7 +11,6 @@ public class Round
         IsActive = false;
         Duration = 0;
     }
-
     public Round(float duration)
     {
         Duration = duration;

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ScoreDisplayer : MonoBehaviour
 {
     public static int Score;
+
     [SerializeField] private SinglePlayer _player;
     private TMP_Text _text;
 

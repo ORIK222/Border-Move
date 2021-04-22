@@ -11,20 +11,10 @@ public class SettingLocaler : MonoBehaviour
     [SerializeField] private TMP_Text _soundTitleText;
     [SerializeField] private TMP_Text _musicTitleText;
     [SerializeField] private Result _result;
-    private int _currentLanguages = 0;
-
     [SerializeField] private List<Sprite> _localeButtonSprites;
     [SerializeField] private Button _localerButton;
-    private void Start()
-    {
-        _currentLanguages = GameManager.Instance.data.Language;
-
-        Localer.CurrentLocale = Localer.AllLanguages[_currentLanguages];
-        Localer.Init(Localer.CurrentLocale);
-        _localerButton.image.sprite = _localeButtonSprites[_currentLanguages];
-        ChangeText();
-        _result.SetResultData();
-    }
+    
+    private int _currentLanguages = 0;
 
     public void LocalerOnButtonClick()
     {
@@ -38,7 +28,6 @@ public class SettingLocaler : MonoBehaviour
         ChangeText();
         _result.SetResultData();
     }
-
     public void ChangeText()
     {
         _settingTitleText.text = Localer.GetText("Setting");
@@ -47,4 +36,17 @@ public class SettingLocaler : MonoBehaviour
         _soundTitleText.text = Localer.GetText("Sound");
         _musicTitleText.text = Localer.GetText("Music");
     }
+
+    private void Start()
+    {
+        _currentLanguages = GameManager.Instance.data.Language;
+
+        Localer.CurrentLocale = Localer.AllLanguages[_currentLanguages];
+        Localer.Init(Localer.CurrentLocale);
+        _localerButton.image.sprite = _localeButtonSprites[_currentLanguages];
+        ChangeText();
+        _result.SetResultData();
+    }
+
+
 }

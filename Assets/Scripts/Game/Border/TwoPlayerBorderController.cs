@@ -2,11 +2,11 @@
 using UnityEngine;
 
 public class TwoPlayerBorderController : MonoBehaviour {
-    [SerializeField] GameObject _leftArrows;
-    [SerializeField] GameObject _rightArrows;
+    [SerializeField] private GameObject _leftArrows;
+    [SerializeField] private GameObject _rightArrows;
 
-    [SerializeField] float _stepLenght;
-    RectTransform _myRectTransform;
+    [SerializeField] private float _stepLenght;
+    private RectTransform _myRectTransform;
     public RectTransform MyRectTransform {
         get
         {
@@ -21,7 +21,7 @@ public class TwoPlayerBorderController : MonoBehaviour {
         StartCoroutine(MoveAnimation(step));
     }
 
-    IEnumerator MoveAnimation(int step) {
+    private IEnumerator MoveAnimation(int step) {
         if (step < 0) {
             _rightArrows.SetActive(true);
         } else {

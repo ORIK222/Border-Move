@@ -2,7 +2,7 @@
 
 public class LoosePlace : MonoBehaviour
 {
-    [SerializeField] SurvivalLevel _survivalLevel;
+    [SerializeField] private SurvivalLevel _survivalLevel;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var border = collision.gameObject.GetComponent<SurvivalBorder>();
