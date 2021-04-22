@@ -2,14 +2,14 @@
 
 public class MenuController : MonoBehaviour
 {
-
+    [SerializeField] private Transform _typeSelectPanel;
     [SerializeField] private Transform _settingPanel;
     [SerializeField] private Transform _resultPanel;
 
     public void StartButtonOnClick()
     {
         if (TypeGameSelector.IsSingle)
-            GameManager.Instance.GameFlow.TransitToScene(UIConsts.SCENE_ID.SURVIVALLEVEL);
+            _typeSelectPanel.gameObject.SetActive(true);
         else
             GameManager.Instance.GameFlow.TransitToScene(UIConsts.SCENE_ID.TWOPLAYERLEVEL);
     }
@@ -20,5 +20,15 @@ public class MenuController : MonoBehaviour
     public void ResultButtonOnClick()
     {
         _resultPanel.gameObject.SetActive(!_resultPanel.gameObject.activeSelf);
+    }
+    public void SurvivalButtonOnClick()
+    {
+        TypeGameSelector.IsScore = false;
+        GameManager.Instance.GameFlow.TransitToScene(UIConsts.SCENE_ID.SURVIVALLEVEL);
+    }
+    public void ScoreButtonOnClick()
+    {
+        TypeGameSelector.IsScore = true;
+        GameManager.Instance.GameFlow.TransitToScene(UIConsts.SCENE_ID.SCORELEVEL);
     }
 }

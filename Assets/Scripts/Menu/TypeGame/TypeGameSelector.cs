@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class TypeGameSelector : MonoBehaviour
 {
     public static bool IsSingle;
+    public static bool IsScore;
     [SerializeField] private TypeSelectButton _typeSelectButton;
     private Animator _animator;
 

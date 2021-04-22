@@ -12,6 +12,7 @@
   <String id="Survival time"> Время выживания: </String>
   <String id="Looser">Ты проиграл!</String>
   <String id="Winer">Ты победил!</String>
+  <String id="Score">Счет</String>
 
   <String id="SingleCount">Количество игр в одиночку </String>
   <String id="DuoCount">Количество игр вдвоем </String>

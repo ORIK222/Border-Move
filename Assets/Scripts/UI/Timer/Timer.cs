@@ -33,7 +33,6 @@ public class Timer : MonoBehaviour
         if (_gameDuration > GameManager.Instance.data.SurvivalLevelTime)
         {
             GameManager.Instance.data.SurvivalLevelTime = _gameDuration;
-            Debug.Log(_currentTime);
             GameManager.Instance.data.SurvivalLevelTimeInString = _currentTime;
         }
     }

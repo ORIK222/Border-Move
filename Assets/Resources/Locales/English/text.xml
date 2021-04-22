@@ -13,11 +13,13 @@
     <String id="SurvivalTime"> Survival time</String>
     <String id="Looser">You loose!</String>
     <String id="Winer">You win!</String>
-
+    <String id="Score">Score</String>
+  
     <String id="SingleCount">Single game count</String>
     <String id="DuoCount">Duo game count</String>
     <String id="BestTime">Best time in survival</String>
     <String id="BestScore">Best score</String>
+  
   
     <String id="CMD.Empty_1">Wait</String>
     <String id="CMD.OneFingerTap_1">Tap</String>

@@ -24,7 +24,7 @@ public class EndGameWindow : MonoBehaviour {
         _buttonRestart.interactable = state;        
     }
 
-    public void Show(bool isSingle = false) {
+    public void Show(bool isSingle = false, bool IsScore = false) {
         if (!isSingle)
         {
             if (_border.MyRectTransform.anchoredPosition.x < 0)
@@ -44,8 +44,16 @@ public class EndGameWindow : MonoBehaviour {
         }
         else if (isSingle)
         {
-            _firstPlayerText.text = Localer.GetText("SurvivalTime") + ": " + Timer.CurrentTime;
-            _firstPlayerPanel.SetActive(true);
+            if (!IsScore)
+            {
+                _firstPlayerText.text = Localer.GetText("SurvivalTime") + ": " + Timer.CurrentTime;
+                _firstPlayerPanel.SetActive(true);
+            }
+            else
+            {
+                _firstPlayerText.text = Localer.GetText("Score") + ": " + ScoreDisplayer.Score;
+                _firstPlayerPanel.SetActive(true);
+            }
         }
             LeanTween.value(gameObject, _canvasGroup.alpha, 1f, 0.3f).setOnUpdate((float val) =>
             {

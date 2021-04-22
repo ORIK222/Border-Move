@@ -23,7 +23,7 @@ public class GameUIController : MonoBehaviour
         _leftInfoPanel.SetActive(false);
         if (!TypeGameSelector.IsSingle)
             _rightInfoPanel.SetActive(false);
-        _endGameWindow.Show(TypeGameSelector.IsSingle);
+        _endGameWindow.Show(TypeGameSelector.IsSingle, TypeGameSelector.IsScore);
     }
 
     public void PauseButtonOnClick()

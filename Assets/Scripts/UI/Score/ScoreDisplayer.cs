@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class ScoreDisplayer : MonoBehaviour
 {
+    public static int Score;
     [SerializeField] private SinglePlayer _player;
     private TMP_Text _text;
 
@@ -21,8 +22,9 @@ public class ScoreDisplayer : MonoBehaviour
         _text.text = "Score: 0";
     }
 
-    private void OnRoundWinned(int warriorCount)
+    private void OnRoundWinned(int score)
     {
-        _text.text = "Score: " + warriorCount.ToString();
+        Score = score;
+        _text.text = "Score: " + score.ToString();
     }
 }

@@ -54,11 +54,12 @@ public class SurvivalLevel : MonoBehaviour, ILevelController
         var winer = CheckRoundResult();
         if (winer)
             _border.IsStop = true;
-
-       _player.MakeRoundResult();
-        _round.Count += 1;
-        Invoke("BeginRound", 0.4f);
         _player.EndRound();
+        _player.MakeRoundResult();
+        _round.Count += 1;
+        if (!IsEndGame)
+        Invoke("BeginRound", 0.4f);
+
     }
     public void EndGame()
     {

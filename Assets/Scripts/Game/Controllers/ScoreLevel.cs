@@ -6,13 +6,13 @@ using UnityEngine.Events;
 
 public class ScoreLevel : MonoBehaviour, ILevelController
 {
+    public UnityAction OnRoundLoseEvent;
 
     [SerializeField] private SinglePlayer _player;
     [SerializeField] private TimeBarController _timeBar;
     [SerializeField] private RoundCountDisplayer _roundNumberText;
 
     [SerializeField] private float _roundTime;
-    [SerializeField] private int _scoreNumberForWin = 50000;
     [SerializeField] private TMP_Text _resultRoundText;
 
     private Round _round;
@@ -62,24 +62,26 @@ public class ScoreLevel : MonoBehaviour, ILevelController
     {
         _round.IsActive = false;
         var winer = CheckRoundResult();
-        if (winer)
-            CheckScoreCount();
-
         _player.MakeRoundResult();
         _round.Count += 1;
         _roundTime -= _roundTime / 50;
-        Invoke("BeginRound", 1f);
+        _round.Duration = _roundTime;        
         _player.EndRound();
+        if(!_endGame)
+        Invoke("BeginRound", 1f);
+
     }    
     public void EndGame()
     {
         GameManager.Instance.data.SingleLevelGameCount += 1;
-        if (_scoreNumber > GameManager.Instance.data.ScoreLevelResult)
-            GameManager.Instance.data.ScoreLevelResult = _scoreNumber;
+        if(_player.Score > GameManager.Instance.data.ScoreLevelResult)
+        GameManager.Instance.data.ScoreLevelResult = _player.Score;
         GameManager.Instance.GameFlow.LooseGame();
+        Heart.isEmpty = false;
     }
     public Player CheckRoundResult()
     {
+        Debug.Log("CheckRoundResult");
         SinglePlayer winer = null;
         bool isWin = !_player.GetIsRoundFailed();
         if (isWin)
@@ -92,6 +94,7 @@ public class ScoreLevel : MonoBehaviour, ILevelController
         {
             StartCoroutine(ShowResultRoundText("Mistake", isWin));
             _player.ScoreAdd(Multiplier.MultiplierType.Wrong);
+            OnRoundLoseEvent?.Invoke();
         }
         return winer;
     }
@@ -118,15 +121,9 @@ public class ScoreLevel : MonoBehaviour, ILevelController
         }
         if (_round.IsActive)
             RoundTimeDecrease();
-    }
 
-    private void CheckScoreCount()
-    {
-        if (_player.Score >= _scoreNumberForWin)
-        {
-            _endGame = true;
-            Invoke("EndGame", 2f);
-        }
+        if (Heart.isEmpty)
+            Invoke("EndGame", 1f);
     }
 
     private IEnumerator ShowResultRoundText(string result, bool isWin)
