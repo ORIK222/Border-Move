@@ -12,11 +12,15 @@ public class Multiplier : MonoBehaviour
     }
     public void ChangeMultiplier(MultiplierType type)
     {
-        
-       if(type == MultiplierType.Wrong)
+
+        if (type == MultiplierType.Wrong)
             multiplierCount = 1;
-       else if (type != MultiplierType.Good)
-            multiplierCount += (int)type;
+        else if (type != MultiplierType.Good)
+        {
+            if (multiplierCount + (int)type <= 10)
+                multiplierCount += (int)type;
+            else multiplierCount = 10;
+        }
         _multiplierDisplayer.SetMultiplierText(multiplierCount);
     }
     public enum MultiplierType

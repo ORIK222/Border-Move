@@ -5,7 +5,6 @@ using UnityEngine.Events;
 public class SinglePlayer : Player
 {    
     [SerializeField] private Multiplier _multiplier;
-    private PlayerTaskDisplayer _playerTaskDisplayer;
     private int _score;
 
     public int Score
