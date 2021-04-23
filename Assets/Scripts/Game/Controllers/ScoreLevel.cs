@@ -79,7 +79,6 @@ public class ScoreLevel : MonoBehaviour, ILevelController
     }
     public Player CheckRoundResult()
     {
-        Debug.Log("CheckRoundResult");
         SinglePlayer winer = null;
         bool isWin = !_player.GetIsRoundFailed();
         if (isWin)

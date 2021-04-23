@@ -310,9 +310,8 @@ GameObject:
   m_Component:
   - component: {fileID: 55506309}
   - component: {fileID: 55506308}
-  - component: {fileID: 55506307}
   - component: {fileID: 55506306}
-  - component: {fileID: 55506310}
+  - component: {fileID: 55506307}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -328,14 +327,30 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55506305}
   m_Enabled: 1
---- !u!124 &55506307
-Behaviour:
+--- !u!114 &55506307
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55506305}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e5768c36d1bb4acea50bd233372843a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Main Camera
+  basicEditor: 1
+  advancedProps: 0
+  hitProps: 0
+  hit3DObjects: 1
+  hit2DObjects: 1
+  hitWorldSpaceUI: 1
+  hitScreenSpaceUI: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  useHitFilters: 0
 --- !u!20 &55506308
 Camera:
   m_ObjectHideFlags: 0
@@ -393,30 +408,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &55506310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 55506305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e5768c36d1bb4acea50bd233372843a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Main Camera
-  basicEditor: 0
-  advancedProps: 0
-  hitProps: 0
-  hit3DObjects: 0
-  hit2DObjects: 0
-  hitWorldSpaceUI: 0
-  hitScreenSpaceUI: 1
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  useHitFilters: 0
 --- !u!1 &63679346
 GameObject:
   m_ObjectHideFlags: 0
@@ -2428,9 +2419,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 1c4dd8a13f501b04f84fe824120f70bb, type: 3}
+      propertyPath: layers.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1c4dd8a13f501b04f84fe824120f70bb, type: 3}
       propertyPath: layers.Array.data[0]
       value: 
-      objectReference: {fileID: 55506310}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c4dd8a13f501b04f84fe824120f70bb, type: 3}
 --- !u!1 &1411723128
@@ -2664,7 +2659,6 @@ MonoBehaviour:
   _timeBar: {fileID: 878501890}
   _roundNumberText: {fileID: 757881977}
   _roundTime: 4
-  _scoreNumberForWin: 5000
   _resultRoundText: {fileID: 462964611}
 --- !u!4 &1775442559
 Transform:
@@ -3290,7 +3284,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3.0421753, y: 0.00061035156}
+  m_AnchoredPosition: {x: -3.0422363, y: 0.00061035156}
   m_SizeDelta: {x: -5.9157715, y: -0.0013427734}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2104894915
