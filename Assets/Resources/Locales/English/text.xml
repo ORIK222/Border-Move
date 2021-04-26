@@ -14,6 +14,8 @@
     <String id="Looser">You loose!</String>
     <String id="Winer">You win!</String>
     <String id="Score">Score</String>
+    <String id="Statistic">Statistic</String>
+    <String id="SelectType">Select type</String>
   
     <String id="SingleCount">Single game count</String>
     <String id="DuoCount">Duo game count</String>

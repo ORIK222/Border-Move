@@ -20,12 +20,12 @@ public class ScoreDisplayer : MonoBehaviour
     private void Awake()
     {
         _text = GetComponent<TMP_Text>();
-        _text.text = "Score: 0";
+        _text.text = Localer.GetText("Score") + ": " + "0";
     }
 
     private void OnRoundWinned(int score)
     {
         Score = score;
-        _text.text = "Score: " + score.ToString();
+        _text.text = Localer.GetText("Score") + ": " + score.ToString();
     }
 }

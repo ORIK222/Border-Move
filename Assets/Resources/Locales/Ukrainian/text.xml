@@ -9,11 +9,13 @@
     <String id="Music">Музика</String>
     <String id="Round">Раунд</String>
     <String id="Time">Час</String>
-    <String id="Survival time"> Час виживання: </String>
+    <String id="SurvivalTime"> Час виживання: </String>
     <String id="Looser">Ти програв!</String>
     <String id="Winer">Ти виграв!</String>
-    <String id="Score">Рахунок</String>
-
+    <String id="Score">Paxyhok</String>
+    <String id="Statistic">Статистика</String>
+    <String id="SelectType">Виберіть режим</String>
+  
     <String id="SingleCount">Кількість ігор поодинці </String>
     <String id="DuoCount">Кількість ігор вдвох </String>
     <String id="BestTime">Кращий час виживання</String>

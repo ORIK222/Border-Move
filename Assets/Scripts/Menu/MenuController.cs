@@ -2,9 +2,15 @@
 
 public class MenuController : MonoBehaviour
 {
+    [SerializeField] private SettingLocaler _settingLocaler;
     [SerializeField] private Transform _typeSelectPanel;
     [SerializeField] private Transform _settingPanel;
     [SerializeField] private Transform _resultPanel;
+
+    private void Start()
+    {
+        _settingLocaler.LocalerOnButtonClick();
+    }
 
     public void StartButtonOnClick()
     {

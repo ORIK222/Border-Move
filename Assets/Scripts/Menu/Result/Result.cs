@@ -3,6 +3,7 @@ using TMPro;
 
 public class Result : MonoBehaviour
 {
+    [SerializeField] private TMP_Text _titleText;
     [SerializeField] private TMP_Text _singleLevelCountText;
     [SerializeField] private TMP_Text _duoLevelCountText;
     [SerializeField] private TMP_Text _bestTimeText;
@@ -10,6 +11,7 @@ public class Result : MonoBehaviour
 
     public void SetResultData()
     {
+        _titleText.text = Localer.GetText("Statistic");
         _singleLevelCountText.text = Localer.GetText("SingleCount") + ": " + GameManager.Instance.data.SingleLevelGameCount.ToString();
         _duoLevelCountText.text = Localer.GetText("DuoCount") + ": " + GameManager.Instance.data.CooperativeLevelGameCount.ToString();
         _bestTimeText.text = Localer.GetText("BestTime") + ": " + GameManager.Instance.data.SurvivalLevelTimeInString;
